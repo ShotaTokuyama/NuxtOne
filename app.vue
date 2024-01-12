@@ -14,12 +14,34 @@ useState<Map<number, Character>>("characterList", (): Map<number, Character> => 
 </script>
 
 <template>
-  <BaseSection />
+  <header>
+    <h1>ワンピース</h1>
+  </header>
+  <main>
+    <NuxtPage />
+  </main>
 </template>
 
 <style>
-section {
-  border: blue 5px solid;
+main {
+  border: black 5px solid;
   margin: 10px;
+}
+
+#breadcrumbs ul {
+  padding-left: 0;
+}
+
+#breadcrumbs ul li {
+  display: inline;
+  list-style-type: none;
+}
+
+#breadcrumbs ul li::before {
+  content: " > ";
+}
+
+#breadcrumbs ul li:first-child::before {
+  content: none;
 }
 </style>
