@@ -1,7 +1,14 @@
 <script setup lang="ts">
-
 // 型定義をimportする際は import type
 import type { Character } from "@/types/interface";
+
+const SITE_TITLE = "ワンピース";
+useHead({
+  // title: SITE_TITLE
+  titleTemplate: (titleChunk: string | undefined): string => {
+    return titleChunk != undefined ? `${titleChunk} | ${SITE_TITLE}` : SITE_TITLE;
+  }
+});
 
 // キャラクターリストデータ
 useState<Map<number, Character>>("characterList", (): Map<number, Character> => {
@@ -14,12 +21,9 @@ useState<Map<number, Character>>("characterList", (): Map<number, Character> => 
 </script>
 
 <template>
-  <header>
-    <h1>ワンピース</h1>
-  </header>
-  <main>
+  <NuxtLayout>
     <NuxtPage />
-  </main>
+  </NuxtLayout>
 </template>
 
 <style>

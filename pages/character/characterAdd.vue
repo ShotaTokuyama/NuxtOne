@@ -3,6 +3,10 @@
 import type { Character } from "@/types/interface";
 import { reactive } from "vue";
 
+definePageMeta({ layout: "character" });
+const PAGE_TITLE = "キャラクター追加";
+useHead({ title: PAGE_TITLE });
+
 const router = useRouter();
 // router.push() => 指定の居場所へ
 // router.back() => 履歴上で一つ前の画面
@@ -24,7 +28,6 @@ const onAdd = (): void => {
 </script>
 
 <template>
-  <h1>キャラクター設定</h1>
   <nav id="breadcrumbs">
     <ul>
       <li>
@@ -33,44 +36,40 @@ const onAdd = (): void => {
       <li>
         <NuxtLink :to="{ name: 'character-characterList' }">キャラクターリスト</NuxtLink>
       </li>
-      <li>キャラクター追加</li>
+      <li>{{ PAGE_TITLE }}</li>
     </ul>
   </nav>
   <section>
-    <h2>キャラクターリスト</h2>
-    <p>追加はこちらから</p>
-    <section>
-      <h2>キャラクター追加</h2>
-      <p>情報を入力し、登録ボタンを押してください。</p>
-      <form :submit.prevent="onAdd">
-        <table>
-          <tr>
-            <td>
-              <label for="addId">No:</label>
-            </td>
-            <td>
-              <input type="number" id="addId" v-model.number="character.id" required>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="addName">名前:</label>
-            </td>
-            <td>
-              <input type="text" id="addName" v-model="character.name" required>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="addBounty">懸賞金:</label>
-            </td>
-            <td>
-              <input type="number" id="addBounty" v-model.number="character.bounty" required>
-            </td>
-          </tr>
-        </table>
-        <button @click="onAdd">登録</button>
-      </form>
-    </section>
+    <h2>{{ PAGE_TITLE }}</h2>
+    <p>情報を入力し、登録ボタンを押してください。</p>
+    <form :submit.prevent="onAdd">
+      <table>
+        <tr>
+          <td>
+            <label for="addId">No:</label>
+          </td>
+          <td>
+            <input type="number" id="addId" v-model.number="character.id" required>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="addName">名前:</label>
+          </td>
+          <td>
+            <input type="text" id="addName" v-model="character.name" required>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="addBounty">懸賞金:</label>
+          </td>
+          <td>
+            <input type="number" id="addBounty" v-model.number="character.bounty" required>
+          </td>
+        </tr>
+      </table>
+      <button @click="onAdd">登録</button>
+    </form>
   </section>
 </template>

@@ -3,6 +3,9 @@
 import type { Character } from "@/types/interface";
 import { computed } from "vue";
 
+const PAGE_TITLE = "キャラクター詳細情報";
+useHead({ title: PAGE_TITLE });
+
 // ルートに関する情報を取得
 const route = useRoute();
 
@@ -26,11 +29,11 @@ const character = computed((): Character => {
       <li>
         <NuxtLink :to="{ name: 'character-characterList' }">キャラクターリスト</NuxtLink>
       </li>
-      <li>キャラクター詳細情報</li>
+      <li>{{ PAGE_TITLE }}</li>
     </ul>
   </nav>
   <section>
-    <h2>キャラクター詳細情報</h2>
+    <h2>{{ PAGE_TITLE }}</h2>
     <table>
       <tr>
         <td>No:</td>
